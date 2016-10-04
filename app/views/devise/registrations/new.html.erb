@@ -6,12 +6,20 @@
       </div>
     </div>
     <div class="jumbotron well">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
           <form>
             <div class="form-group">
               <%= f.label :name %>
-              <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Name" %>
+              <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Имя" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :phone %>
+              <%= f.text_field :phone, autofocus: true, class: "form-control", placeholder: "Ваш телефон" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :address %>
+              <%= f.text_field :address, autofocus: true, class: "form-control", placeholder: "Ваш адрес" %>
             </div>
             <div class="form-group">
               <%= f.label :email %>

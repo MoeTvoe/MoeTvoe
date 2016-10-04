@@ -1,15 +1,36 @@
-<div class="text-center">
-  <h1><%= @user.name %></h1>
-  <h1><%= @user.address %></h1>
-  <h1><%= @user.phone %></h1>
-
-  <%= image_tag user_avatar(@user) %>
-
-  <% if @user == current_user %>
-      <p class="buffer-top">
-        <%= link_to 'Редактировать профиль', edit_user_path(@user), class: 'btn btn-default' %>
-      </p>
-  <% end %>
+<div class="row">
+  <div class="col-md-6">
+    <%= image_tag user_avatar(@user) %>
+  </div>
+  <div class="col-md-6">
+    <h2>Профиль менялы</h2>
+    <table class="table table-striped">
+      <tbody>
+      <tr>
+        <th>Имя</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>Адрес</th>
+        <td><%= @user.address %></td>
+      </tr>
+      <tr>
+        <th>Телефон</th>
+        <td><%= @user.phone %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= @user.email %></td>
+      </tr>
+      </tbody>
+    </table>
+    <% if @user == current_user %>
+        <p class="buffer-top">
+          <%= link_to 'Редактировать профиль', edit_user_path(@user), class: 'btn btn-warning' %>
+          <%= link_to 'Удалить профиль', edit_user_path(@user), class: 'btn btn-danger' %>
+        </p>
+    <% end %>
+  </div>
 </div>
 
 <%# Выводим список товаров пользователя %>

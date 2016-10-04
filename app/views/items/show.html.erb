@@ -1,8 +1,8 @@
 <div class="item">
   <div class="item-info row">
-    <div class="col-md-8 col-md-8">
+    <div class="col-md-8">
       <h2 class="page-header"><%= @item.title %></h2>
-      <h3 class="text-right"><%= @item.address %></h3>
+      <h3><%= @item.address %></h3>
       <div class="img-rounded"><%= image_tag(item_photo(@item), class: 'img-thumbnail') %>
       </div>
       <div class="item-photos">
@@ -12,23 +12,24 @@
         </div>
         <%# Кнопка вывода формы добавления фотографии %>
         <%# Рисуем форму для добавления новой фотографии (которая будет скрыта) %>
-        <div class="item-photo-form">
-          <%= render partial: 'photos/form', locals: {photo: @new_photo || @item.photos.build} %>
-        </div>
       </div>
+
       <div class="buffer-top">
         <% if current_user_can_edit?(@item) %>
-            <div class="buffer-top text-right">
-              <%= link_to 'Удалить', item_path(@item), method: :delete, class: 'btn btn-sm btn-danger',
-                          data: {confirm: "Вы уверены?"} %>
-              <%= link_to "Добавить фотку", '#', class: 'btn btn-primary item-photo-form-link' %>
-              <%# Кнопка вывода формы добавления фотографии %>
-              <%= link_to 'Изменить описание', edit_item_path(@item), class: 'btn btn-primary' %>
+            <div class="item-photo-form">
+
+              <%= render partial: 'photos/form', locals: {photo: @new_photo || @item.photos.build} %>
             </div>
+            <p class="text-center">
+              <%= link_to 'Удалить товар', item_path(@item), method: :delete, class: 'btn btn-sm btn-danger',
+                          data: {confirm: "Вы уверены?"} %>
+              <%= link_to 'Изменить описание', edit_item_path(@item), class: 'btn btn-sm btn-warning' %>
+            </p>
         <% end %>
       </div>
+
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
           <div class="panel panel-default">
             <div class="panel-heading">Описание</div>
             <div class="panel-body">
@@ -38,10 +39,23 @@
         </div>
       </div>
     </div>
-    <div class="item-owner text-right">
+    <div class="col-md-4">
       <h4>Предлагает обмен:</h4>
       <h3><%= render partial: 'users/user', object: @item.user %></h3>
-      <h4><%= @item.user.phone %></h4>
+      <table class="table table-striped">
+        <tr>
+          <th>Адрес</th>
+          <td><%= @item.user.address %></td>
+        </tr>
+        <tr>
+          <th>Телефон</th>
+          <td><%= @item.user.phone %></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><%= @item.user.email %></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
