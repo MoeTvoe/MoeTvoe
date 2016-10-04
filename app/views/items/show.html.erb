@@ -1,0 +1,47 @@
+<div class="item">
+  <div class="item-info row">
+    <div class="col-md-8 col-md-8">
+      <h2 class="page-header"><%= @item.title %></h2>
+      <h3 class="text-right"><%= @item.address %></h3>
+      <div class="img-rounded"><%= image_tag(item_photo(@item), class: 'img-thumbnail') %>
+      </div>
+      <div class="item-photos">
+        <%# Выводим все фотографии товара %>
+        <div class="item-photos-gallery">
+          <%= render partial: 'photos/photo', collection: @item.photos.except(@new_photo) %>
+        </div>
+        <%# Кнопка вывода формы добавления фотографии %>
+        <%# Рисуем форму для добавления новой фотографии (которая будет скрыта) %>
+        <div class="item-photo-form">
+          <%= render partial: 'photos/form', locals: {photo: @new_photo || @item.photos.build} %>
+        </div>
+      </div>
+      <div class="buffer-top">
+        <% if current_user_can_edit?(@item) %>
+            <div class="buffer-top text-right">
+              <%= link_to 'Удалить', item_path(@item), method: :delete, class: 'btn btn-sm btn-danger',
+                          data: {confirm: "Вы уверены?"} %>
+              <%= link_to "Добавить фотку", '#', class: 'btn btn-primary item-photo-form-link' %>
+              <%# Кнопка вывода формы добавления фотографии %>
+              <%= link_to 'Изменить описание', edit_item_path(@item), class: 'btn btn-primary' %>
+            </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">Описание</div>
+            <div class="panel-body">
+              <p><%= @item.description %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-owner text-right">
+      <h4>Предлагает обмен:</h4>
+      <h3><%= render partial: 'users/user', object: @item.user %></h3>
+      <h4><%= @item.user.phone %></h4>
+    </div>
+  </div>
+</div>

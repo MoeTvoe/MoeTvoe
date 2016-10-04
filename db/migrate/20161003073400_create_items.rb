@@ -3,9 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :title
       t.text :description
-      t.text :address
-      t.datetime :created_at
-      t.datetime :finished_at
+      t.string :address
 
       t.timestamps null: false
     end

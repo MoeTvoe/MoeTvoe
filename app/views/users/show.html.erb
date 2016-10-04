@@ -1,0 +1,27 @@
+<div class="text-center">
+  <h1><%= @user.name %></h1>
+  <h1><%= @user.address %></h1>
+  <h1><%= @user.phone %></h1>
+
+  <%= image_tag user_avatar(@user) %>
+
+  <% if @user == current_user %>
+      <p class="buffer-top">
+        <%= link_to 'Редактировать профиль', edit_user_path(@user), class: 'btn btn-default' %>
+      </p>
+  <% end %>
+</div>
+
+<%# Выводим список товаров пользователя %>
+<div class="row">
+  <div class="col-md-12">
+    <% if @user.items.any? %>
+        <h3>Меняет:</h3>
+        <div class="row">
+          <%= render partial: 'items/item', collection: @user.items %>
+        </div>
+    <% else %>
+        <p class="buffer-top">Пользователь пока ничего не меняет</p>
+    <% end %>
+  </div>
+</div>

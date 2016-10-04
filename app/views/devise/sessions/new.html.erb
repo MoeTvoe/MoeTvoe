@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-info">
+      <div class="panel-heading text-center">
+        <h2><strong>Войти</strong></h2>
+      </div>
+    </div>
+    <div class="jumbotron well">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <form>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+                  <em class="buffer-left">(<%= @minimum_password_length %> символов минимум)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Пароль" %>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+                <div class="form-group">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+            <% end %>
+
+            <div class="actions">
+              <div class="leftstr">
+                <div class="btn">
+                  <%= render "devise/shared/links" %>
+                </div>
+              </div>
+              <div class="rightstr">
+                <button type="submit" class="btn btn-primary">Войти</button>
+              </div>
+            </div>
+      <% end %>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+

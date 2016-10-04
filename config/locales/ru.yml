@@ -1,0 +1,48 @@
+ru:
+  # Перевод моделей
+  activerecord:
+    # Перевод названия моделей
+    models:
+      user: 'Пользователь'
+      item: 'Товар'
+      photo: 'Фотография'
+
+    # Перевод названий аттрибутов моделей
+    attributes:
+      user:
+        email: 'Email'
+        name: 'Имя'
+        address: 'Адрес юзера'
+        avatar: 'Аватарка'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        phone: 'Телефон'
+      item:
+        title: 'Название'
+        address: 'Место нахождения товара'
+        description: 'Описание'
+      photo:
+        photo: 'Фотография'
+
+  # Перевод сообщений, которые отправляет контроллер
+  controllers:
+    items:
+      created: 'Вы создали новый товар'
+      updated: 'Вы обновили товар'
+      destroyed: 'Вы удалили товар :('
+    users:
+      updated: 'Вы обновили свой профиль'
+    photos:
+      error: 'Что-то не так с фоткой'
+      created: 'Вы добавили фотографию к товару'
+      destroyed: 'Вы удалили фотку'
+
+
+  # Перевод названия приложения и компании-разработчика
+  app:
+    name: 'Moe_Tvoe'
+    company: 'Sergey Drach'
+
+  photos:
+    photo:
+      destroy_confirm: 'Вы уверены, что хотите удалить эту фотографию?'

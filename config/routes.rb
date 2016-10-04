@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :user
+  devise_for :users
+  root "items#index"
 
-  root "users#index"
+  resources :items do
+    resources :photos, only: [:create, :destroy]
+
+    post :show, on: :member
+  end
+  resources :users, only: [:show, :edit, :update]
 end

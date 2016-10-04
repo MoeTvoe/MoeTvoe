@@ -1,14 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>MoeTvoe</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "МоеТвое" %></title>
   <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.css", :media => "all" %>
+
+  <!-- For third-generation iPad with high-resolution Retina display: -->
+  <!-- Size should be 144 x 144 pixels -->
+  <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+
+  <!-- For iPhone with high-resolution Retina display: -->
+  <!-- Size should be 114 x 114 pixels -->
+  <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+
+  <!-- For first- and second-generation iPad: -->
+  <!-- Size should be 72 x 72 pixels -->
+  <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <!-- Size should be 57 x 57 pixels -->
+  <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+
+  <!-- For all other devices -->
+  <!-- Size should be 32 x 32 pixels -->
+  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.js" %>
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
+          type="text/javascript"></script>
+  <![endif]-->
 </head>
 <body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
 
-<%= yield %>
+    <%= link_to "Moe Tvoe", root_path, class: 'navbar-brand' %>
+    <%= image_tag "logo.jpg", alt: "swap_img",
+                  id: "HomeImage",
+                  class: "img-circle img-logo" %>
+      <%= link_to 'Предложить товар на обмен', new_item_path, class: 'text-center btn btn-success navbar-btn' %>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+          <%= link_to ' Профиль', current_user, class: 'btn btn-default navbar-btn fa fa-user' %>
+          <%= link_to ' Выйти', destroy_user_session_path, class: 'btn btn-default navbar-btn fa fa-sign-out', :method => :delete %>
+      <% else %>
+          <%= link_to ' Войти', new_user_session_path, class: 'btn btn-default navbar-btn fa fa-sign-in' %>
+          <%= link_to ' Зарегистрироваться', new_user_registration_path, class: 'btn btn-danger navbar-btn fa fa-plug' %>
+
+
+      <% end %>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class=".row-fluid">
+    <div class="col-md-12">
+      <%= bootstrap_flash %>
+      <%= yield %>
+    </div>
+  </div><!--/row-->
+
+  <footer>
+    <p>&copy; Team V&S 2016</p>
+  </footer>
+
+</div> <!-- /container -->
 
 </body>
 </html>

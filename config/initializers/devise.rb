@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'b7de1b81c3e11910a0269c14de18fd2e1c70bc4a75faf553ee6b556107bb2b2cd406b97da67d2978f8fd64cc4b381a33de6727ca1380fe413f3373affd412565'
+  # config.secret_key = '8cd3f0f0c3d50fd5945bcbc73dc27ac9c8bb5fde0fa9334794ea9df3c036a7d482bb346ad7b828b5d5d2c615f240e400e090be3970c99376a176fe85a4d90bc0'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -90,12 +90,6 @@ Devise.setup do |config|
   # from the server. You can disable this option at your own risk.
   # config.clean_up_csrf_token_on_authentication = true
 
-  # When false, Devise will not attempt to reload routes on eager load.
-  # This can reduce the time taken to boot the app but if your application
-  # requires the Devise mappings to be loaded during boot time the application
-  # won't boot properly.
-  # config.reload_routes = true
-
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 11. If
   # using other algorithms, it sets how many times you want the password to be hashed.
@@ -108,7 +102,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '9fde036036a9df8fc437e202c9603bd44c16b3e86e6be9630f77efb6cdc92fc852eb33927e58b052cdbbe488cd80baaa99b0cb8c7946313efe84a7ff196c9083'
+  # config.pepper = '28ee166d41f901042157c214617da91b96fe78af6d7f61a1354188174b47d666f082aab5a48a999ae41589d47ee04e32e5651af5002e88c4aafda564313ef973'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false

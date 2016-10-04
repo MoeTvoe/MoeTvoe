@@ -1,4 +1,31 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+
+.item-info {
+    position: relative;
+    color: #000000;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.item-img {
+    position: absolute;
+    width: 80%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.text-color {
+    color: #fff;
+}
+
+.item-info-inner {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.space {
+    margin-right: 5px;
+}
